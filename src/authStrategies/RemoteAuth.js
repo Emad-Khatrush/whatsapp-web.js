@@ -108,11 +108,12 @@ class RemoteAuth extends BaseAuthStrategy {
             await this.compressSession();
             await this.store.save({session: this.sessionName});
             // await fs.promises.unlink(`${this.sessionName}.zip`);
-            await fs.promises.rm(`${this.tempDir}`, {
+            /* await fs.promises.rm(`${this.tempDir}`, {
                 recursive: true,
                 force: true,
                 maxRetries: this.rmMaxRetries,
             }).catch(() => {});
+            */
             if(options && options.emit) this.client.emit(Events.REMOTE_SESSION_SAVED);
         }
     }
